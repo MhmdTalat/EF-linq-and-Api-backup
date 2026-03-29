@@ -1,4 +1,7 @@
-using EFCore.Model;
+using Api_part.Model;
+using Api_part.Data;
+using Api_part.Iservice;
+using Api_part.Service;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,8 +9,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<APPContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// ✅ DI (لازم قبل Build)
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -18,18 +24,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-using var scope = app.Services.CreateScope();
-var context = scope.ServiceProvider.GetRequiredService<APPContext>();
 
-var expensiveProductsList = context.Products
-                                   .Where(p => p.Price > 100)
-                                   .ToList();
-Console.WriteLine("Expensive Products:");
-foreach (var product in expensiveProductsList)
-{
-    Console.WriteLine($"- {product.Name}: ${product.Price}");
-}
 
+app.MapControllers();
 
 app.Run();
 
