@@ -1,4 +1,4 @@
-namespace EFCore.Model
+namespace Api_part.Model
 {
     public class Product
     {
