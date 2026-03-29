@@ -1,15 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
 using Api_part.Iservice;
 using Api_part.Model; // or the correct namespace where Product is defined
-namespace Api_part.Controller
+namespace Api_part.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ProductController : ControllerBase
+    public class ProductControllers : ControllerBase
     {
         private readonly IProductService _service;
 
-        public ProductController(IProductService service)
+        public ProductControllers(IProductService service)
         {
             _service = service;
         }
