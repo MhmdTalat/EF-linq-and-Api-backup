@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Api_part.Iservice;
 using Api_part.Model; // or the correct namespace where Product is defined
-namespace Api_part.Controllers
+namespace Api_part.Controller
 {
     [ApiController]
     [Route("api/[controller]")]

@@ -1,9 +1,9 @@
-using Api_part.Data;
+
 using Api_part.Model;
 using Api_part.Iservice;
 
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace Api_part.Controller
 {

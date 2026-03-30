@@ -1,7 +1,5 @@
-using Microsoft.EntityFrameworkCore; // لـ DbContext و EF functionality
-using Api_part.Data; // لو APPContext موجود هناك
-using Api_part.Model; // لو Category و Product موجودين هناك
-using Api_part.Iservice;
+
+using Api_part.Model; // لو Category و Product موجودين
  
  
 
